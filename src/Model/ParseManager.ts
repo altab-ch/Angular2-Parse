@@ -1,7 +1,7 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
 var Parse = require('parse').Parse;
-Parse.initialize('QZRQeeMb5iGxtOtuEiSbFNMVrUtPhpdmRK3y7fiJ', 'S7n5EY6pRjLisMBZBgFm13Y9UOPaHvgL60yOMvJL');
+Parse.initialize('', '');
 
 export class ParseManager{
     constructor(){
@@ -60,6 +60,40 @@ export class ParseManager{
           error:function(error) {
             console.log('parse saving error');
           }
+        });
+    }
+    
+    logIn(username: String, password: String, success: ()=> void, error: ()=>void)
+    {
+        Parse.User.logIn(username, password).then(function(){
+            success();
+        },function(e){
+            error();
+        });
+    }
+    
+    logInFacebook(success: (user: Parse.User) => void, error: (user: Parse.User, error: any) => void)
+    {
+        Parse.FacebookUtils.logIn(null, {
+            success: (user: Parse.User) => {
+                success(user);
+            },
+            error: (user: Parse.User, error: any) => {
+                error(user, error);
+            }
+        });
+    }
+    
+    signup(username: String, password: String, success: ()=>void)
+    {
+        var user = new Parse.User();
+        user.set("username", username);
+        user.set("password", password);
+
+        user.signUp().then(function(){
+            success();
+        }, function(e){
+            console.log("Signin failed through email");
         });
     }
 }

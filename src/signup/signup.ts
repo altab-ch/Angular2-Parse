@@ -4,12 +4,10 @@ import {coreDirectives} from 'angular2/directives';
 import {Component, View} from 'angular2/angular2';
 import {status, json} from '../utils/fetch';
 import { Router, RouterLink } from 'angular2/router';
+import {ParseManager} from '../Model/ParseManager';
 
 let styles   = require('./signup.css');
 let template = require('./signup.html');
-
-var Parse = require('parse').Parse;
-Parse.initialize('QZRQeeMb5iGxtOtuEiSbFNMVrUtPhpdmRK3y7fiJ', 'S7n5EY6pRjLisMBZBgFm13Y9UOPaHvgL60yOMvJL');
 
 @Component({
   selector: 'signup'
@@ -20,7 +18,7 @@ Parse.initialize('QZRQeeMb5iGxtOtuEiSbFNMVrUtPhpdmRK3y7fiJ', 'S7n5EY6pRjLisMBZBg
   template: template
 })
 export class Signup {
-  constructor(public router: Router) {
+  constructor(public router: Router, public parseManager: ParseManager) {
   }
 
   signup(event, username, password) {
@@ -30,12 +28,10 @@ export class Signup {
     var user = new Parse.User();
     user.set("username", username);
     user.set("password", password);
-
-    user.signUp().then(function(){
+      
+    this.parseManager.signup(username, password, ()=>{
         console.log("User signed in through email");
         self.router.parent.navigate('/home');
-    }, function(e){
-        console.log("Signin failed through email");
     });
   }
 
