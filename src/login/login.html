@@ -1,14 +1,25 @@
-<div class="login jumbotron center-block">
-  <h1>Login</h1>
-  <form role="form" (submit)="login($event, username.value, password.value)">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" #username class="form-control" id="username" placeholder="Username">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" #password class="form-control" id="password" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-</div>
+<section id="login" class="login-section">
+        <div class="container">
+            <div class="loginView col-xs-12">
+              <h1>Login</h1>
+              <form role="form" (submit)="login($event, username.value, password.value)">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" #username class="form-control" id="username" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" #password class="form-control" id="password" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+                  <p *ng-if="errorMsg">{{errorMsg}}</p>
+            </form>
+
+            <p><a class="btn btn-primary btn-lg" role="button" (click)="signup()">Signup</a></p>
+            <p><a class="btn btn-primary btn-lg" role="button" (click)="signupFacebook()">Facebook</a></p>
+
+            </div>
+        </div>
+    </section>
+
+

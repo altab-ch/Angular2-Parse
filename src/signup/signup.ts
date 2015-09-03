@@ -8,6 +8,9 @@ import { Router, RouterLink } from 'angular2/router';
 let styles   = require('./signup.css');
 let template = require('./signup.html');
 
+var Parse = require('parse').Parse;
+Parse.initialize('QZRQeeMb5iGxtOtuEiSbFNMVrUtPhpdmRK3y7fiJ', 'S7n5EY6pRjLisMBZBgFm13Y9UOPaHvgL60yOMvJL');
+
 @Component({
   selector: 'signup'
 })
@@ -22,25 +25,17 @@ export class Signup {
 
   signup(event, username, password) {
     event.preventDefault();
-    window.fetch('http://localhost:3001/users', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username, password
-      })
-    })
-    .then(status)
-    .then(json)
-    .then((response) => {
-      localStorage.setItem('jwt', response.id_token);
-      this.router.navigate('/home');
-    })
-    .catch((error) => {
-      alert(error.message);
-      console.log(error.message);
+    
+    var self = this
+    var user = new Parse.User();
+    user.set("username", username);
+    user.set("password", password);
+
+    user.signUp().then(function(){
+        console.log("User signed in through email");
+        self.router.parent.navigate('/home');
+    }, function(e){
+        console.log("Signin failed through email");
     });
   }
 

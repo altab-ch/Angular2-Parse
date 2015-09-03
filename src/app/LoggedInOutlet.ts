@@ -3,6 +3,8 @@ import {Router, RouterOutlet} from 'angular2/router';
 import {Injector} from 'angular2/di';
 import {Login} from '../login/login';
 
+var Parse = require('parse').Parse;
+
 @Directive({
   selector: 'router-outlet'
 })
@@ -21,7 +23,7 @@ export class LoggedInRouterOutlet extends RouterOutlet {
 
   activate(instruction) {
     var url = this._parentRouter.lastNavigationAttempt;
-    if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
+    if (!this.publicRoutes[url] && !Parse.User.current()){//!localStorage.getItem('jwt')) {
       instruction.component = Login;
     }
     return super.activate(instruction);

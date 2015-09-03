@@ -1,3 +1,29 @@
 .red {
   color: red;
 }
+
+.fa{
+    color: #777777;
+}
+
+.fa:link {
+    text-decoration: none;
+}
+
+.fa:visited {
+    text-decoration: none;
+}
+
+.fa:hover {
+    text-decoration: none;
+}
+
+.fa:active {
+    text-decoration: none;
+    
+}
+
+.main-cell {
+    height: 40px;
+    border-bottom: 1px solid #dddddd;
+}

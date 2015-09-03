@@ -1,0 +1,16 @@
+
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row main-cell" *ng-for="#category of categories" (click)="selectCat(category)">
+                <div class="col-xs-12" (click)="selectCat(category)">
+                    {{category.get('name')}}
+                </div>
+            </div>
+            <div class="row main-cell" (click)="createCat(category)">
+                <div class="col-xs-12" (click)="createCat(category)">
+                    Add category
+                </div>
+            </div>
+        </div>
+    </section>
+ 

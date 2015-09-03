@@ -4,7 +4,7 @@
   "description": "This is a sample that shows how to add authentication to an Angular 2 (ng2) app",
   "main": "",
   "scripts": {
-    "start": "webpack-dev-server --inline -d --colors --display-error-details --display-cached --port 3000",
+    "start": "webpack-dev-server --inline -d --colors --display-error-details --display-cached --host 192.168.0.10 --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,16 +21,21 @@
   },
   "homepage": "https://github.com/auth0/angular2-authentication-sample",
   "dependencies": {
+    "angular": "^1.4.4",
+    "angular-ui-bootstrap": "^0.13.3",
     "angular2": "2.0.0-alpha.30",
+    "bootstrap": "~3.3.4",
+    "jquery": "^2.1.4",
+    "jwt-decode": "~1.1.0",
+    "mobile-angular-ui": "0.0.0",
+    "parse": "^1.5.0",
     "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.0",
     "rtts_assert": "2.0.0-alpha.29",
     "rx": "^2.5.3",
-    "zone.js": "^0.5.0",
-    "bootstrap": "~3.3.4",
-    "jwt-decode": "~1.1.0",
     "whatwg-fetch": "~0.7.0",
-    "when": "~3.7.3"
+    "when": "~3.7.3",
+    "zone.js": "^0.5.0"
   },
   "devDependencies": {
     "css-loader": "^0.14.4",
@@ -44,7 +49,7 @@
     "json-loader": "^0.5.1",
     "style-loader": "^0.12.2",
     "typescript": "^1.5.0-beta",
-    "typescript-simple-loader": "^0.1.2",
+    "typescript-simple-loader": "^0.3.4",
     "url-loader": "^0.5.5",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"

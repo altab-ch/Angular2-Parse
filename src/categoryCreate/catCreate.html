@@ -1,0 +1,14 @@
+<section id="login" class="login-section">
+    <div class="container">
+        <div class="loginView col-xs-12">
+          <h1>Create category</h1>
+          <form role="form" (submit)="createCat($event, catname.value)">
+          <div class="form-group">
+            <label>Category name</label>
+            <input type="text" #catname class="form-control" id="catname" placeholder="Category name">
+          </div>
+          <button type="submit" class="btn btn-default">Create</button>
+          </form>
+        </div>
+    </div>
+</section>
