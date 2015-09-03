@@ -4,6 +4,7 @@ Simple implementation of Angular 2 Typescript application with Parse framework a
   
 npm install  
 tsd install  
+npm start
 
 
 
